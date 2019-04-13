@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/holo_blue_dark"
+    tools:context=".SoundBoard">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/quizBT"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/holo_green_light"
+            android:text="Quiz"
+            android:textColor="@color/common_google_signin_btn_text_dark_default"
+            android:textSize="24sp" />
+
+        <Button
+            android:id="@+id/goodbyeBT"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/holo_orange_dark"
+            android:text="Goodbye"
+            android:textColor="@color/common_google_signin_btn_text_dark_default"
+            android:textSize="24sp" />
+
+        <Button
+            android:id="@+id/helloBT"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/holo_red_light"
+            android:text="Hello"
+            android:textColor="@color/common_google_signin_btn_text_dark_default"
+            android:textSize="24sp" />
+
+        <Button
+            android:id="@+id/shutupBT"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/holo_purple"
+            android:text="Shutup"
+            android:textColor="@color/common_google_signin_btn_text_dark_default"
+            android:textSize="24sp" />
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>

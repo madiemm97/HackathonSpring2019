@@ -1,11 +1,9 @@
 package com.example.hackathonspring2019;
 
 import android.content.Intent;
-import android.provider.ContactsContract;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
@@ -20,10 +18,6 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-import java.util.Collections;
-
-import static com.example.hackathonspring2019.Core.mAuth;
-
 public class MainActivity extends AppCompatActivity implements View.OnClickListener
 {
     private EditText emailET;
@@ -31,6 +25,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private TextView signupTV;
     private Button loginButton;
     ProgressBar progressBar;
+    private MainActivity myself;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -42,6 +37,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         this.passwordET = (EditText)findViewById(R.id.passwordET);
         this.signupTV = (TextView) findViewById(R.id.signupTV);
         this.loginButton = (Button)findViewById(R.id.loginButton);
+        this.myself = this;
 
         progressBar = (ProgressBar)findViewById(R.id.progressbar);
 
@@ -50,6 +46,39 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Core.mAuth = FirebaseAuth.getInstance();
 
 
+    }
+
+    public void onLoginButtonPressed(View v)
+    {
+        if(emailET.getText().toString().equals("") || passwordET.getText().toString().equals(""))
+        {
+            Toast.makeText(getApplicationContext(), "Please enter your information", Toast.LENGTH_SHORT).show();
+        }
+        else
+        {
+            Core.mAuth.signInWithEmailAndPassword(emailET.getText().toString(), passwordET.getText().toString())
+                    .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if (task.isSuccessful())
+                            {
+                                Core.currentUser = Core.mAuth.getCurrentUser();
+                                Intent i = new Intent(myself, Screen3.class);
+                                myself.startActivity(i);
+                            }
+                            else
+                                {
+                                // If sign in fails, display a message to the user.
+                                //Log.w(TAG, "signInWithEmail:failure", task.getException());
+                                Toast.makeText(myself, "Authentication failed.",
+                                        Toast.LENGTH_SHORT).show();
+                                //updateUI(null);
+                            }
+
+                            // ...
+                        }
+                    });
+        }
     }
 
 
@@ -96,6 +125,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 progressBar.setVisibility(View.GONE);
                 if (task.isSuccessful()) {
                     //finish();
+                    FirebaseUser user = Core.mAuth.getCurrentUser();
+                    //updateUI(user);
                     Intent intent = new Intent(MainActivity.this, Screen3.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intent);

@@ -25,7 +25,7 @@ import static com.example.hackathonspring2019.Core.mAuth;
 public class SignUpActivity extends AppCompatActivity implements View.OnClickListener
 {
     private EditText emailET;
-    private EditText passwordET;
+    private EditText passwordET, nameET;
     private TextView signInTV;
     private Button signUpButton;
 
@@ -40,6 +40,7 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
 
         this.emailET = (EditText)findViewById(R.id.emailET);
         this.passwordET = (EditText)findViewById(R.id.passwordET);
+        this.nameET = (EditText)findViewById(R.id.nameET);
         this.signInTV = (TextView) findViewById(R.id.signInTV);
         this.signUpButton = (Button)findViewById(R.id.signupButton);
         this.progressBar = (ProgressBar)findViewById(R.id.progressbar);
@@ -57,6 +58,7 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
     {
         String email = emailET.getText().toString().trim();
         String password = this.passwordET.getText().toString().trim();
+        String name = this.nameET.getText().toString().trim();
 
         if(email.isEmpty())
         {
@@ -88,6 +90,7 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
 
         progressBar.setVisibility(View.VISIBLE);
 
+        //Core.mAuth.
         Core.mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {

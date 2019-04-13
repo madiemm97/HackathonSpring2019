@@ -20,6 +20,14 @@
             android:textSize="36sp" />
 
         <EditText
+            android:id="@+id/nameET"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Name"
+            android:inputType="textPersonName" />
+
+        <EditText
             android:id="@+id/emailET"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
