@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "49910869070",
+    "firebase_url": "https://hackathonspring2019.firebaseio.com",
+    "project_id": "hackathonspring2019",
+    "storage_bucket": "hackathonspring2019.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:49910869070:android:74ebdd36bcf80814",
+        "android_client_info": {
+          "package_name": "com.example.hackathonspring2019"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "49910869070-jp8rt25mukkuluflfbit75k3a3ttr1a1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.hackathonspring2019",
+            "certificate_hash": "4573aee51506683ffd8572378d612af362029b63"
+          }
+        },
+        {
+          "client_id": "49910869070-k1n99fir3c3nhn11lfmijvp5lhlcufhu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCNi9Dyl4iPOW5krxoKpaIymzGxa4tyZa4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "49910869070-k1n99fir3c3nhn11lfmijvp5lhlcufhu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
