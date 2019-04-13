@@ -41,7 +41,7 @@
             android:id="@+id/loginButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:onClick="onSubmitButtonPressed"
+            android:onClick="onClick"
             android:text="Login" />
 
         <TextView
@@ -53,5 +53,15 @@
             android:onClick="onClick"
             android:text="Don't Have Account? Sign up" />
 
+        <ProgressBar
+            android:id="@+id/progressbar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:visibility="gone" />
+
     </LinearLayout>
+
+
 </android.support.constraint.ConstraintLayout>

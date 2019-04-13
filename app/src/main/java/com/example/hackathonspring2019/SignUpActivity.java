@@ -40,16 +40,17 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
 
         this.emailET = (EditText)findViewById(R.id.emailET);
         this.passwordET = (EditText)findViewById(R.id.passwordET);
-        this.signInTV = (TextView) findViewById(R.id.signupTV);
+        this.signInTV = (TextView) findViewById(R.id.signInTV);
         this.signUpButton = (Button)findViewById(R.id.signupButton);
         this.progressBar = (ProgressBar)findViewById(R.id.progressbar);
 
-        mAuth = FirebaseAuth.getInstance();
+        Core.mAuth = FirebaseAuth.getInstance();
 
         //findViewById(R.id.signupTV).setOnClickListener(this);
         //findViewById(R.id.loginButton).setOnClickListener(this);
 
-        //this.findViewById(R.id.signupButton).setOnClickListener();
+        this.findViewById(R.id.signupButton).setOnClickListener(this);
+        this.findViewById(R.id.signInTV).setOnClickListener(this);
     }
 
     private void registerUser()
@@ -87,12 +88,15 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
 
         progressBar.setVisibility(View.VISIBLE);
 
-        mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+        Core.mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 progressBar.setVisibility(View.GONE);
                 if (task.isSuccessful()) {
-                    Toast.makeText(getApplicationContext(), "User registered successfully", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(getApplicationContext(), "User registered successfully", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(SignUpActivity.this, Screen3.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(intent);
                     //finish();
                     //startActivity(new Intent(SignUpActivity.this, ProfileActivity.class));
                 } else {
